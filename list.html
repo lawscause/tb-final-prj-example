@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" />
+    <title>List</title>
+</head>
+<script src="scripts.js"></script>
+<script src="processes.js"></script>
+<script src="fileReader.js"></script>
+<script src="importBookListCl.js"></script>
+
+<body>
+
+    <div id="userDiv"></div>
+    <h1>List</h1>
+    <div>
+        Select a file: <input type="file" id="myFile">
+        <!--<button onclick='processFile()'>Process</button>-->
+        <button onclick='importBookList()'>Process</button>
+        <table id="myTable"></table>
+    </div>
+    <div id="bookList">
+        <table id="bookListTable" class="styled-table"></table>
+    </div>
+</body>
+<script>
+    doUserInfo();
+</script>
+
+</html>
