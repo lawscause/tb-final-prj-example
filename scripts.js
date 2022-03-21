@@ -305,6 +305,7 @@ var sortTable = (n) => {
   /* Make a loop that will continue until
     no switching has been done: */
   while (switching) {
+    debugger;
     // Start by saying: no switching is done:
     switching = false;
     rows = table.rows;
@@ -315,6 +316,8 @@ var sortTable = (n) => {
       shouldSwitch = false;
       /* Get the two elements you want to compare,
         one from current row and one from the next: */
+      console.log("rows[i]: ", rows[i]);
+      console.log("rows[i]: ", rows[i + 1]);
       x = rows[i].getElementsByTagName("TD")[n];
       y = rows[i + 1].getElementsByTagName("TD")[n];
       /* Check if the two rows should switch place,

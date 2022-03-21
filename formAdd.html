@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+</head>
+<script src="scripts.js"></script>
+<script src="processes.js"></script>
+
+<body>
+    <div id="userDiv"></div>
+    <h1>Add</h1>
+    <div><label for="Title">Title:</label><input type="text" id="title" /></div>
+    <div><label for="Author">Author:</label><input type="text" id="author" /></div>
+    <button id="add" type="button" onclick="doAdd();">Add</button>
+</body>
+<script>
+    //Adds the user's Infor to the userDiv
+    doUserInfo();
+    var doAdd = () => {
+        let bookList = getBookList();
+        let tbTitle = document.getElementById("title");
+        let tbAuthor = document.getElementById("author");
+        let found = false;
+
+        for (let i = 0; i < bookList.length; i++) {
+            let book = bookList[i];
+            const [title, author, location, pDate, condition] = book;
+            if (title.toUpperCase() == tbTitle.value.toUpperCase() && author.toUpperCase() == tbTitle.value
+                .toUpperCase()) {
+                alert("This book is already apart of the collection.")
+                found = true;
+            }
+        }
+
+        /*
+        if(!found) {
+            //title, author, location, pDate, condition
+            let book = [title, author, location, pDate, condition]
+            bookList.push()
+        }
+        */
+
+    }
+</script>
+
+</html>
