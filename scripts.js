@@ -187,9 +187,9 @@ var doSetup = () => {
 };
 
 var doLoggedInCheck = () => {
-    //if not on the login page
-  if (!window.location.href.includes("login.html")) {
-    console.log("doLoggedInCheck - Not login.html");
+  //if not on the login page
+  if (!window.location.href.toLowerCase().includes("login.html")) {
+    console.log("doLoggedInCheck - Not login.html or formLogin.html");
     //grab the loggedInUser from localStorage
     let loggedInUser = getLoggedInUser();
     console.log("doLoggedInCheck - ", loggedInUser);
@@ -199,7 +199,8 @@ var doLoggedInCheck = () => {
       console.log("doLoggedInCheck - transfering to login.html");
       window.location.href = "login.html";
     }
-  } else { //if you are on the login page
+  } else {
+    //if you are on the login page
     //do the setup for the site.
     console.log("doLoggedInCheck - login.html");
     doSetup();
