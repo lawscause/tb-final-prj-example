@@ -187,15 +187,20 @@ var doSetup = () => {
 };
 
 var doLoggedInCheck = () => {
+    //if not on the login page
   if (!window.location.href.includes("login.html")) {
     console.log("doLoggedInCheck - Not login.html");
+    //grab the loggedInUser from localStorage
     let loggedInUser = getLoggedInUser();
     console.log("doLoggedInCheck - ", loggedInUser);
+    //if the loggedInUser is null this means you aren't logged in
+    //send them to the login page
     if (loggedInUser == null) {
       console.log("doLoggedInCheck - transfering to login.html");
       window.location.href = "login.html";
     }
-  } else {
+  } else { //if you are on the login page
+    //do the setup for the site.
     console.log("doLoggedInCheck - login.html");
     doSetup();
   }

@@ -18,6 +18,7 @@
     <button id="add" type="button" onclick="doAdd();">Add</button>
 </body>
 <script>
+    //Adds the user's Infor to the userDiv
     doUserInfo();
     var doAdd = () => {
         let bookList = getBookList();
@@ -25,15 +26,16 @@
         let tbAuthor = document.getElementById("author");
         let found = false;
 
-        for(let i=0; i < bookList.length; i++){
+        for (let i = 0; i < bookList.length; i++) {
             let book = bookList[i];
             const [title, author, location, pDate, condition] = book;
-            if(title.toUpperCase() == tbTitle.value.toUpperCase() && author.toUpperCase() == tbTitle.value.toUpperCase()) {
+            if (title.toUpperCase() == tbTitle.value.toUpperCase() && author.toUpperCase() == tbTitle.value
+                .toUpperCase()) {
                 alert("This book is already apart of the collection.")
                 found = true;
             }
         }
-        
+
         /*
         if(!found) {
             //title, author, location, pDate, condition

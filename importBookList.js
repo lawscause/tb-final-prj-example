@@ -1,5 +1,4 @@
-
-
+//Example not used in project
 const importBookList = () => {
   let fileSize = 0;
   //get file
@@ -73,7 +72,6 @@ const importBookList = () => {
 
   return false;
 };
-
 
 var readFromArray = () => {
   let bookList = getBookList();

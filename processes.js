@@ -9,8 +9,7 @@ var doLogOut = () => {
   window.location.href = "index.html";
 };
 
-//check to see if on the login page otherwise go to the login page.
-doLoggedInCheck();
+
 
 var doUserInfo = () => {
   let loggedInUser = getLoggedInUser();
@@ -30,3 +29,5 @@ var doUserInfo = () => {
 };
 
 
+//check to see if the user is on the login page otherwise it will go to the login page.
+doLoggedInCheck();

@@ -1,3 +1,4 @@
+//Example not used in project
 function processFile() {
   let fileSize = 0;
   //get file
