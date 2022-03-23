@@ -19,12 +19,25 @@
     <h1>List</h1>
     <div>
         Select a file: <input type="file" id="myFile">
-        <!--<button onclick='processFile()'>Process</button>-->
-        <button onclick='importBookList()'>Process</button>
+        <button onclick="importBookList()">Process</button>
         <table id="myTable"></table>
     </div>
     <div id="bookList">
-        <table id="bookListTable" class="styled-table"></table>
+        <table id="bookListTable" class="styled-table">
+            <thead>
+                <tr id="headerRow">
+                    <th onclick="sortTable(0);">Title</th>
+                    <th onclick="sortTable(1);">Author</th>
+                    <th onclick="sortTable(2);">Genre</th>
+                    <th onclick="sortTable(3);">Publisher</th>
+                    <th onclick="sortTable(4);">Length</th>
+                    <th>U</th>
+                    <th>D</th>
+                </tr>
+            </thead>
+            <tbody id="bookListTableBody">
+            </tbody>
+        </table>
     </div>
 </body>
 <script>

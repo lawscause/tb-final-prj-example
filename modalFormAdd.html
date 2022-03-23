@@ -20,11 +20,11 @@
 
     <h2>Modal Add Book Form</h2>
 
-
-    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add Book</button>
-
-    <div id="id01" class="modal">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+    <button onclick="document.getElementById('mdlFormAdd').style.display='block'" style="width:auto;">Add Book</button>
+    <button onclick="document.getElementById('mdlFormUpdate').style.display='block'" style="width:auto;">Update
+        Book</button>
+    <div id="mdlFormAdd" class="modal">
+        <span onclick="document.getElementById('mdlFormAdd').style.display='none'" class="close"
             title="Close Modal">&times;</span>
         <form class="modal-content" onsubmit="addBook(event);">
             <div class="container">
@@ -53,15 +53,68 @@
                 <input type="number" placeholder="Enter Length" name="length" id="tbLength" required>
 
                 <div class="clearfix">
-                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    <button type="button" onclick="document.getElementById('mdlFormUpdate').style.display='none'"
                         class="cancelbtn">Cancel</button>
                     <button type="submit" class="crudBtn">Add</button>
                 </div>
             </div>
         </form>
     </div>
+    <div id="mdlFormUpdate" class="modal">
+        <span onclick="document.getElementById('mdlFormUpdate').style.display='none'" class="close"
+            title="Close Modal">&times;</span>
+        <form class="modal-content" onsubmit="updateBook(event);">
+            <div class="container">
+                <h1>Update the Book</h1>
+                <p>Please fill in this form to update the book.</p>
+                <hr>
+                <input type="hidden" name="hfBookID" id="hfBookID">
+
+                <label for="title"><b>Title</b></label>
+                <input type="text" placeholder="Enter Book Title" name="title" id="tbUpTitle" required>
+
+                <label for="author"><b>Author</b></label>
+                <input type="text" placeholder="Enter Author's Name" name="author" id="tbUpAuthor" required>
+
+                <div><label for="ddlUpGenre"><b>Choose a Genre</b></label>
+                    <select name="genre" id="ddlUpGenre">
+                        <option value="Economics">Economics</option>
+                        <option value="History">History</option>
+                        <option value="Math">Math</option>
+                        <option value="Science">Science</option>
+                    </select>
+                </div>
+
+                <label for="publisher"><b>Publisher</b></label>
+                <input type="text" placeholder="Enter Publisher" name="publisher" id="tbUpPublisher" required>
+
+                <label for="length"><b>Length</b></label>
+                <input type="number" placeholder="Enter Length" name="length" id="tbUpLength" required>
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('mdlFormUpdate').style.display='none'"
+                        class="cancelbtn">Cancel</button>
+                    <button type="submit" class="crudBtn">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div id="bookList">
-        <table id="bookListTable" class="styled-table"></table>
+        <table id="bookListTable" class="styled-table">
+            <thead>
+                <tr id="headerRow">
+                    <th onclick="sortTable(0);">Title</th>
+                    <th onclick="sortTable(1);">Author</th>
+                    <th onclick="sortTable(2);">Genre</th>
+                    <th onclick="sortTable(3);">Publisher</th>
+                    <th onclick="sortTable(4);">Length</th>
+                    <th>U</th>
+                    <th>D</th>
+                </tr>
+            </thead>
+            <tbody id="bookListTableBody">
+            </tbody>
+        </table>
     </div>
 </body>
 

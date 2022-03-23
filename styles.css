@@ -20,6 +20,11 @@
     padding: 12px 15px;
 }
 
+.selectable:hover {
+    text-decoration: underline;
+    color: blue;  
+}
+
 .styled-table td.sorted {
     background-color: rgba(255, 255, 0, 0.15);
   }

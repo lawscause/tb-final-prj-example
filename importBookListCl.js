@@ -1,4 +1,4 @@
-const importBookList = () => {
+var importBookList = () => {
   let fileSize = 0;
   //get file
   let theFile = document.getElementById("myFile");
@@ -19,11 +19,17 @@ const importBookList = () => {
         let lines = content.split("\r");
         //loop all rows
         for (let count = 0; count < lines.length; count++) {
+          if (0 == count) {
+            //skip import of first row with column names
+            continue;
+          }
+          debugger;
           //split each row content
           let rowContent = lines[count].split(",");
           console.log("rowContent: ", rowContent);
           let [title, author, genre, length, publisher] = rowContent;
           let aBook = new Book(
+            count,
             replaceChars(title),
             replaceChars(author),
             replaceChars(genre),
@@ -68,11 +74,8 @@ var readFromArray = () => {
   let bookList = getBookList();
 
   if (bookList) {
-    let table = document.getElementById("bookListTable");
-    console.log("table: ", table);
-    let thead = document.createElement("thead");
-    console.log("thead: ", thead);
-    let tbody = document.createElement("tbody");
+    let tbody = document.getElementById("bookListTableBody");
+    tbody.innerHTML = "";
     console.log("tbody: ", tbody);
     for (let rowIndex = 0; rowIndex < bookList.length; rowIndex++) {
       //create a tr element
@@ -80,86 +83,61 @@ var readFromArray = () => {
       let book = bookList[rowIndex];
       console.log("book: ", book);
       let tag = "td";
-      if (rowIndex == 0) {
-        tag = "th";
-      } else {
-        tag = "td";
-      }
 
       let titleElem = document.createElement(tag);
       let titleCell = document.createTextNode(book.title);
       titleElem.appendChild(titleCell);
-
-      if (rowIndex == 0) {
-        titleElem.setAttribute("onclick", "sortTable(0);");
-      }
+      titleElem.classList.add("title");
       row.appendChild(titleElem);
 
       let authorElem = document.createElement(tag);
       let authorCell = document.createTextNode(book.author);
       authorElem.appendChild(authorCell);
-      if (rowIndex == 0) {
-        authorElem.setAttribute("onclick", "sortTable(1);");
-      }
+      authorElem.classList.add("author");
       row.appendChild(authorElem);
 
       let genreElem = document.createElement(tag);
       let genreCell = document.createTextNode(book.genre);
       genreElem.appendChild(genreCell);
-      if (rowIndex == 0) {
-        genreElem.setAttribute("onclick", "sortTable(2);");
-      }
+      genreElem.classList.add("genre");
       row.appendChild(genreElem);
 
       let publisherElem = document.createElement(tag);
       let publisherCell = document.createTextNode(book.publisher);
       publisherElem.appendChild(publisherCell);
-      if (rowIndex == 0) {
-        publisherElem.setAttribute("onclick", "sortTable(3);");
-      }
+      publisherElem.classList.add("publisher");
       row.appendChild(publisherElem);
 
       let lengthElem = document.createElement(tag);
       let lengthCell = document.createTextNode(book.length);
       lengthElem.appendChild(lengthCell);
-      if (rowIndex == 0) {
-        lengthElem.setAttribute("onclick", "sortTable(4);");
-      }
+      lengthElem.classList.add("length");
       row.appendChild(lengthElem);
 
       let selectElement = document.createElement(tag);
-      let selectCell = document.createTextNode("select");
+      let selectCell = document.createTextNode("update");
       selectElement.appendChild(selectCell);
-      selectElement.id = "slctElem" + rowIndex;
-      selectElement.setAttribute("onclick", "doSetActiveRow(this);");
+      selectElement.id = `slctElem_${book.id}`;
+      selectElement.setAttribute("onclick", "setupBookUpdate(this);");
+      selectElement.classList.add("selectable");
       row.appendChild(selectElement);
 
       let deleteElement = document.createElement(tag);
       let deleteCell = document.createTextNode("delete");
       deleteElement.appendChild(deleteCell);
-      deleteElement.id = rowIndex;
-      deleteElement.setAttribute("onclick", "doDeleteRow(this);");
+      deleteElement.id = `delete_${book.id}`;
+      deleteElement.setAttribute("onclick", "deleteBook(this);");
+      deleteElement.classList.add("selectable");
       row.appendChild(deleteElement);
 
-      row.id = "row" + rowIndex;
-      //row.setAttribute("onclick", "doSetRowActive(this);");
+      row.setAttribute("name", "row_" + rowIndex);
+      row.id = book.id;
 
       console.log("row: ", row);
-      if (rowIndex == 0) {
-        //append thead to table contents
-        thead.appendChild(row);
-        console.log("thead: ", thead);
-        //append table contents
-        table.appendChild(thead);
-      } else {
-        //append tbody to table
-        tbody.appendChild(row);
-        console.log("tbody: ", tbody);
-        //append table contents
-        table.appendChild(tbody);
-      }
 
-      console.log("table: ", table);
+      //append tbody to table
+      tbody.appendChild(row);
+      console.log("tbody: ", tbody);
     }
   } else {
     alert("The book list is empty");

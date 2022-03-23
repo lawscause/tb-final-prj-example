@@ -5,6 +5,7 @@ var getSiteUsrs = () => {
     ? JSON.parse(localStorage.getItem(siteUsersKey))
     : [];
 };
+
 var loggedInUserKey = "logged-in-user";
 var getLoggedInUser = () => {
   return JSON.parse(localStorage.getItem(loggedInUserKey));
@@ -99,7 +100,8 @@ class BookFull {
 }
 
 class Book {
-  constructor(title, author, genre, length, publisher) {
+  constructor(id, title, author, genre, length, publisher ) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.genre = genre;
@@ -172,9 +174,18 @@ var createInitialUsers = () => {
     [mainEmployee, secEmployee]
   );
 
+  let storeManager = new Manager(
+    "Mason Ranger",
+    978,
+    { add: true, update: true, delete: true, list: true },
+    1,
+    [mainEmployee, secEmployee, mainManager]
+  );
+
   console.dir(mainManager);
   addSiteUser("employee1", "testing1234", mainEmployee);
   addSiteUser("manager1", "testing5678", mainManager);
+  addSiteUser("admin", "testing0", storeManager);
 };
 
 var doSetup = () => {
@@ -305,7 +316,6 @@ var sortTable = (n) => {
   /* Make a loop that will continue until
     no switching has been done: */
   while (switching) {
-    debugger;
     // Start by saying: no switching is done:
     switching = false;
     rows = table.rows;
