@@ -75,7 +75,8 @@ var readFromArray = () => {
 
   if (bookList) {
     let tbody = document.getElementById("bookListTableBody");
-    tbody.innerHTML = "";
+    //tbody.innerHTML = "";
+    removeAllChildrenOfElementByElement(tbody);
     console.log("tbody: ", tbody);
     for (let rowIndex = 0; rowIndex < bookList.length; rowIndex++) {
       //create a tr element
@@ -115,18 +116,27 @@ var readFromArray = () => {
       row.appendChild(lengthElem);
 
       let selectElement = document.createElement(tag);
-      let selectCell = document.createTextNode("update");
-      selectElement.appendChild(selectCell);
+      let selectButton = document.createElement("button");
+      selectButton.innerText = "Update";
+      selectButton.id = `btnUpdate_${book.id}`;
+      selectButton.setAttribute("onclick", "setupBookUpdate(this)");
+      selectButton.setAttribute("style", "width:auto");
+      selectElement.appendChild(selectButton);
       selectElement.id = `slctElem_${book.id}`;
-      selectElement.setAttribute("onclick", "setupBookUpdate(this);");
+      //selectElement.setAttribute("onclick", "setupBookUpdate(this);");
       selectElement.classList.add("selectable");
       row.appendChild(selectElement);
 
       let deleteElement = document.createElement(tag);
-      let deleteCell = document.createTextNode("delete");
-      deleteElement.appendChild(deleteCell);
+      let deleteButton = document.createElement("button");
+      deleteButton.innerText = "Delete";
+
+      deleteButton.id = `btnDelete_${book.id}`;
+      deleteButton.setAttribute("onclick", "deleteBook(this)");
+      deleteButton.setAttribute("style", "width:auto");
+      deleteElement.appendChild(deleteButton);
       deleteElement.id = `delete_${book.id}`;
-      deleteElement.setAttribute("onclick", "deleteBook(this);");
+      //deleteElement.setAttribute("onclick", "deleteBook(this);");
       deleteElement.classList.add("selectable");
       row.appendChild(deleteElement);
 

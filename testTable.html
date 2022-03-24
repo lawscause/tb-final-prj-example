@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="controls">clearAll
+        <button id="createTable" onclick="createTable(1)">Create Table 1</button>
+        <!--<button id="removeTable" onclick="deleteTable(1)">Remove Table</button>
+        <button id="createTable" onclick="createTable(2)">Create Table 2</button>
+        <button id="removeTable" onclick="deleteTable(2)">Remove Table 2</button>
+        <button id="clearAll" onclick="clearAll()">Clear All</button>-->
+        <button id="addRows" onclick="AddRows(1)">Add Rows</button>
+    </div>
+    <div id="root"></div>
+
+</body>
+<script>
+    let root = document.getElementById("root");
+    var table;
+
+    var createTable = (tableID) => {
+
+        debugger;
+        table = document.createElement("table");
+        table.id = tableID;
+        let tableRow = document.createElement("tr");
+        let tableCellA = document.createElement("td");
+        tableCellA.innerText = `A ${tableID}`;
+        let tableCellB = document.createElement("td");
+        tableCellB.innerText = `B ${tableID}`;
+        let tableCellC = document.createElement("td");
+        tableCellC.innerText = `C ${tableID}`;
+
+        tableRow.appendChild(tableCellA);
+        tableRow.appendChild(tableCellB);
+        tableRow.appendChild(tableCellC);
+        table.appendChild(tableRow);
+
+        root.appendChild(table);
+
+        alert(`Table ${tableID} created.`);
+    }
+
+
+    var AddRows = (tableID) => {
+
+        debugger;
+        let tableRow = document.createElement("tr");
+        let tableCellA = document.createElement("td");
+        tableCellA.innerText = `A ${tableID}`;
+        let tableCellB = document.createElement("td");
+        tableCellB.innerText = `B ${tableID}`;
+        let tableCellC = document.createElement("td");
+        tableCellC.innerText = `C ${tableID}`;
+
+        tableRow.appendChild(tableCellA);
+        tableRow.appendChild(tableCellB);
+        tableRow.appendChild(tableCellC);
+        table.appendChild(tableRow);
+
+        alert(`Table ${tableID} created.`);
+    }
+
+
+    var deleteTable = (tableID) => {
+
+        debugger;
+        // grab element you want to remove
+        table = document.getElementById(tableID);
+        if (table) {
+            // remove element from DOM (ES6 way)
+            table.remove();
+            alert(`Table ${tableID} removed.`);
+        } else {
+
+            alert(`Table ${tableID} did not exist.`);
+        }
+
+    }
+
+    var clearAll = () => {
+        removeAllChildrenOfElementByID("root");
+    }
+
+    var removeAllChildrenOfElementByID = (id) => {
+        const parent = document.getElementById(id);
+        removeAllChildrenOfElementByElement(parent);
+    };
+
+    var removeAllChildrenOfElementByElement = (parent) => {
+        if (parent) {
+            while (parent.firstChild) {
+                parent.firstChild.remove();
+            }
+        }
+    };
+</script>
+
+</html>

@@ -100,7 +100,7 @@ class BookFull {
 }
 
 class Book {
-  constructor(id, title, author, genre, length, publisher ) {
+  constructor(id, title, author, genre, length, publisher) {
     this.id = id;
     this.title = title;
     this.author = author;
@@ -365,6 +365,58 @@ var sortTable = (n) => {
   document.body.style.cursor = "default";
 };
 
+var sortTableUsingArray = (n) => {
+  document.body.style.cursor = "wait";
+  let tBody, dir, bookList;
+  tBody = document.getElementById("bookListTableBody");
+  //clear tBody
+  //tBody.innerHTML = "";
+  removeAllChildrenOfElementByElement(tBody);
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  bookList = getBookList();
+  if ("asc" == dir) {
+    switch (n) {
+      case 0:
+        bookList.sort(sortByTitleAsc);
+        break;
+      case 1:
+        bookList.sort(sortByAuthorAsc);
+        break;
+      case 2:
+        bookList.sort(sortByGenreAsc);
+        break;
+      case 3:
+        bookList.sort(sortByPublisherAsc);
+        break;
+      case 4:
+        bookList.sort(sortByLengthAsc);
+        break;
+    }
+  } else {
+    switch (n) {
+      case 0:
+        bookList.sort(sortByTitleDesc);
+        break;
+      case 1:
+        bookList.sort(sortByAuthorDesc);
+        break;
+      case 2:
+        bookList.sort(sortByGenreDesc);
+        break;
+      case 3:
+        bookList.sort(sortByPublisherDesc);
+        break;
+      case 4:
+        bookList.sort(sortByLengthDesc);
+        break;
+    }
+  }
+  setBookList(bookList);
+  readFromArray();
+  document.body.style.cursor = "default";
+};
+
 var doSetActiveRow = (selectedElemCell) => {
   alert("doSetActiveRow ");
   let selectedCell = document.getElementById(selectedElemCell.id);
@@ -388,3 +440,29 @@ var doDeleteRow = (selectedElemCell) => {
   console.log(booksList);
   setBookList(booksList);
 };
+
+var removeAllChildrenOfElementByID = (id) => {
+  const parent = document.getElementById(id);
+  removeAllChildrenOfElementByElement(parent);
+};
+
+var removeAllChildrenOfElementByElement = (parent) => {
+  if (parent) {
+    while (parent.firstChild) {
+      parent.firstChild.remove();
+    }
+  }
+};
+
+//return the number embedded in a button, table row, etc's id
+var getNumberFromID = (id) => {
+  try {
+    let idParts = id.split("_");
+    if (idParts) {
+      return idParts[idParts.length - 1];
+    }
+  } catch (e) {
+    return e;
+  }
+};
+

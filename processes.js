@@ -1,3 +1,6 @@
+
+//log out by remove the items from local storage
+//send the user to the index page
 var doLogOut = () => {
   localStorage.removeItem(siteUsersKey);
   localStorage.removeItem(loggedInUserKey);
@@ -10,7 +13,9 @@ var doLogOut = () => {
 };
 
 
-
+//show the user information in a user div on
+//the screen.  The userDiv has to be added to the page 
+//for this to work
 var doUserInfo = () => {
   let loggedInUser = getLoggedInUser();
   let userDiv = document.getElementById("userDiv");

@@ -15,14 +15,16 @@
 
 .styled-table thead th:hover {background-color: lightgreen;}
 
+
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
+    border: 1px solid black;
 }
 
-.selectable:hover {
+.styled-table th {
+    text-align: center;
     text-decoration: underline;
-    color: blue;  
 }
 
 .styled-table td.sorted {
@@ -47,3 +49,42 @@
 }
 
 .styled-table tbody tr:hover {background-color: coral;}
+
+.tableFixHead {
+    overflow-y: auto;
+    height: 400px;
+  }
+
+.tableFixHead thead th {
+    background-color: #009879;
+    position: sticky;
+    top: 0;
+}
+
+.tableFixHead table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  button:hover {background-color: #3e8e41}
+  
+  button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }

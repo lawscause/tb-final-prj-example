@@ -56,7 +56,8 @@ var AddBook = () => {
 var makeFlex = () => {
   //find the bookList
   let bookList = document.getElementById("bookList");
-  bookList.innerHTML = "";
+  //bookList.innerHTML = "";
+  removeAllChildrenOfElementByElement(bookList);
   debugger;
 
   for (let i = 0; i < bookArray.length; i++) {

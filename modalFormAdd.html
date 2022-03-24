@@ -20,9 +20,11 @@
 
     <h2>Modal Add Book Form</h2>
 
+    <!--open the add modal when the Add Book button is clicked-->
     <button onclick="document.getElementById('mdlFormAdd').style.display='block'" style="width:auto;">Add Book</button>
-    <button onclick="document.getElementById('mdlFormUpdate').style.display='block'" style="width:auto;">Update
-        Book</button>
+    <!--open the update modal when the Update Book button is clicked, this button is hidden-->
+    <button onclick="document.getElementById('mdlFormUpdate').style.display='block'"
+        style="width:auto; display:none;">Update Book</button>
     <div id="mdlFormAdd" class="modal">
         <span onclick="document.getElementById('mdlFormAdd').style.display='none'" class="close"
             title="Close Modal">&times;</span>
@@ -53,7 +55,8 @@
                 <input type="number" placeholder="Enter Length" name="length" id="tbLength" required>
 
                 <div class="clearfix">
-                    <button type="button" onclick="document.getElementById('mdlFormUpdate').style.display='none'"
+                    <!--close the modal when the cancel button is clicked-->
+                    <button type="button" onclick="document.getElementById('mdlFormAdd').style.display='none'"
                         class="cancelbtn">Cancel</button>
                     <button type="submit" class="crudBtn">Add</button>
                 </div>
@@ -92,6 +95,7 @@
                 <input type="number" placeholder="Enter Length" name="length" id="tbUpLength" required>
 
                 <div class="clearfix">
+                    <!--close the modal when the cancel button is clicked-->
                     <button type="button" onclick="document.getElementById('mdlFormUpdate').style.display='none'"
                         class="cancelbtn">Cancel</button>
                     <button type="submit" class="crudBtn">Update</button>
@@ -99,17 +103,17 @@
             </div>
         </form>
     </div>
-    <div id="bookList">
+    <div id="bookList" class="tableFixHead">
         <table id="bookListTable" class="styled-table">
             <thead>
                 <tr id="headerRow">
-                    <th onclick="sortTable(0);">Title</th>
-                    <th onclick="sortTable(1);">Author</th>
-                    <th onclick="sortTable(2);">Genre</th>
-                    <th onclick="sortTable(3);">Publisher</th>
-                    <th onclick="sortTable(4);">Length</th>
-                    <th>U</th>
-                    <th>D</th>
+                    <th onclick="sortTableUsingArray(0);">Title</th>
+                    <th onclick="sortTableUsingArray(1);">Author</th>
+                    <th onclick="sortTableUsingArray(2);">Genre</th>
+                    <th onclick="sortTableUsingArray(3);">Publisher</th>
+                    <th onclick="sortTableUsingArray(4);">Length</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="bookListTableBody">
