@@ -1,7 +1,7 @@
 # tb-final-prj-example
 Mock Code for Final Project
 
-## Login with 
+## Login credentials and notes about examples
 Employee username: employee1, password: testing1234
 
 Manager username: manager1, password: testing5678
