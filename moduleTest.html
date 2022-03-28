@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Test</title>
+    <!-- include moduleTest.js file as type module-->
+    <script type="Module" src="moduleTest.js"></script>
+</head>
+
+<body>
+    <form id="frmLogin">
+        <div class="imgcontainer">
+            <img src="./images/pexels-cottonbro-6344242.jpeg" alt="Avatar" class="avatar">
+        </div>
+        <div class="container">
+            <div id="loginError" class="hide"></div>
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="userName" id="userName" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</body>
+<script type="module">
+    //import the doTest method from moduleTest.js
+    import {doTest} from "./moduleTest.js"
+    //create a reference to the form frmLogin
+    let frmLogin = document.getElementById('frmLogin');
+    //add an EventListener on frmLogin for the onsubmit event using submit
+    //to 
+    frmLogin.addEventListener('submit', (evt) =>   {
+        evt.preventDefault();
+        doTest(evt);
+    });
+
+    /* same as above
+    document.getElementById('frmLogin').addEventListener('submit', function(evt){
+        evt.preventDefault();
+        doTest(evt);
+    });
+    */
+</script>
+
+</html>
